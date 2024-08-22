@@ -1,0 +1,25 @@
+{
+  "id": "/",
+  "short_name": "Oauth IWA",
+  "name": "OAuth flow for IWA",
+  "version": "0.1.0",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "type": "image/png",
+      "sizes": "369x369",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "display_override": ["borderless"],
+  "scope": "/",
+  "isolated_storage": true,
+  "permissions_policy": {
+    "cross-origin-isolated": ["self"],
+    "direct-sockets": ["self"],
+    "controlledframe": ["self"],
+    "window-management": ["self"]
+  }
+}

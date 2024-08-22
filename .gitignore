@@ -2,6 +2,9 @@
 logs
 **/*.log
 
+# Certificates folder
+certs
+
 node_modules
 dist
 dist-ssr
@@ -22,3 +25,4 @@ certs
 
 # Compiled files
 update.json
+pnpm-lock.yaml
