@@ -166,8 +166,6 @@ export class OAuthConnector {
   }
 
   async #getAccessCode() {
-    // See https://developers.google.com/identity/protocols/oauth2/native-app#exchange-authorization-code
-
     const url_params =
       `?code=${this.#authenticationCode}&` +
       `client_id=${this.#clientId}&` +

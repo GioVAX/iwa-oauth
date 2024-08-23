@@ -25,38 +25,40 @@
     <script type="module" src="./index.js"></script>
   </head>
   <body>
-    <div class="">
-      <div >
-        <label for="auth-endpoint">Authentication endpoint</label>
-        <input type="text" id="auth-endpoint"/>
+    <div class="table">
+      <div class="row">
+        <label for="auth-endpoint" class="cell">Authentication endpoint</label>
+        <input type="text" id="auth-endpoint" class="cell"/>
       </div>
-      <div >
-        <label for="access-endpoint">Access endpoint</label>
-        <input type="text" id="access-endpoint"/>
+      <div class="row">
+        <label for="access-endpoint" class="cell">Access endpoint</label>
+        <input type="text" id="access-endpoint" class="cell"/>
       </div>
-      <div >
-        <label for="client-id">Client ID</label>
-        <input type="text" id="client-id"/>
+      <div class="row">
+        <label for="client-id" class="cell">Client ID</label>
+        <input type="text" id="client-id" class="cell"/>
       </div>
-      <div >
-        <label for="client-secret">Client Secret</label>
-        <input type="text" id="client-secret"/>
+      <div class="row">
+        <label for="client-secret" class="cell">Client Secret</label>
+        <input type="text" id="client-secret" class="cell"/>
       </div>
-      <div >
-        <label for="scope">Scope</label>
-        <input type="text" id="scope"/>
+      <div class="row">
+        <label for="scope" class="cell">Scope</label>
+        <input type="text" id="scope" class="cell"/>
       </div>
-
-      <div >
-        <button id="oauth-flow">OAuth flow</button>
+      <div class="row">
+        <div class="cell"></div>
+        <div class="cell" style="text-align: right;">
+          <button id="oauth-flow" >OAuth flow</button>
+        </div>
       </div>
-      <div >
-        <label for="auth-token">Authentication token</label>
-        <input type="text" id="auth-token"/>
+      <div class="row">
+        <label for="auth-token" class="cell">Authentication token</label>
+        <input type="text" id="auth-token" class="cell" disabled/>
       </div>
-      <div >
-        <label for="access-code">Access code</label>
-        <input type="text" id="access-code"/>
+      <div class="row">
+        <label for="access-code" class="cell">Access code</label>
+        <input type="text" id="access-code" class="cell" disabled/>
       </div>
     </div>
   </body>
