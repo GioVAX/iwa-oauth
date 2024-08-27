@@ -14,29 +14,31 @@
  * limitations under the License.
  */
 
-import {OAuthConnector} from './oauth.mjs'
+import { OAuthConnector } from "./oauth.mjs";
 
-window.addEventListener('load', async () => {
-  console.log('window loaded');
-  document.getElementById('oauth-flow').onclick = async () => {
-    console.log('click');
-    let connector = new OAuthConnector(
-      document.getElementById("auth-endpoint").value,
-      document.getElementById("access-endpoint").value
-    );
+window.addEventListener("load", async () => {
+  document
+    .getElementById("oauth-form")
+    .addEventListener("submit", async (event) => {
+      let connector = new OAuthConnector(
+        document.getElementById("auth-endpoint").value,
+        document.getElementById("access-endpoint").value
+      );
 
-    console.log('constructed');
-    connector
-      .getOAuthAccessCode(
-        document.getElementById("client-id").value,
-        document.getElementById("client-secret").value,
-        [document.getElementById("scope").value],
-      )
-      .then((code) => {
-        document.getElementById("access-code").value = code;
-        document.getElementById("auth-token").value = connector.authentication_token;
-        console.log('code returned: ' + code);
-      });
-  };
-  console.log('button hooked');
+      console.log("constructed");
+      connector
+        .getOAuthAccessCode(
+          document.getElementById("client-id").value,
+          document.getElementById("client-secret").value,
+          [document.getElementById("scope").value]
+        )
+        .then((code) => {
+          document.getElementById("access-code").value = code;
+          document.getElementById("auth-token").value =
+            connector.authentication_token;
+          console.log("code returned: " + code);
+        });
+      event.preventDefault();
+    });
+  console.log("button hooked");
 });

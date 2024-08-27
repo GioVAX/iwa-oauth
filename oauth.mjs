@@ -45,13 +45,11 @@ export class OAuthConnector {
     this.#promiseResolver = resolve;
     this.#promiseRejecter = reject;
 
-    this.#socketServer.opened.then(
-      (server) => {
-        this.#redirectUri = `http://localhost:${server.localPort}`;
-        this.#runHttpServer();
-        this.#authenticate(this.#authentication_endpoint);
-      },
-    );
+    this.#socketServer.opened.then((server) => {
+      this.#redirectUri = `http://localhost:${server.localPort}`;
+      this.#runHttpServer();
+      this.#authenticate(this.#authentication_endpoint);
+    });
 
     return promise;
   }
@@ -100,9 +98,8 @@ export class OAuthConnector {
   }
 
   async #runHttpServer() {
-    const server =
-      await this.#socketServer.opened;
-    const connections = server.readable.getReader();
+    const { readable } = await this.#socketServer.opened;
+    const connections = readable.getReader();
 
     while (true) {
       const { value: connection, done } = await connections.read();
@@ -155,10 +152,17 @@ export class OAuthConnector {
 
   #processRequest(text) {
     const lines = text.split("\r\n");
+    const params = lines[0].split(" ")[1].substring(2);
+    const urlParams = new URLSearchParams(params);
+    const state = urlParams.get("state");
 
-    if (lines[0].includes("state=pass-through%20value")) {
-      let matches = lines[0].match(/code=(.*)[&$]/);
-      this.#authenticationCode = matches[1];
+    if (state != null && state == "pass-through value") {
+      const code = urlParams.get("code");
+      if (code == null) {
+        return false;
+      }
+
+      this.#authenticationCode = code;
       return true;
     } else {
       return false;
@@ -166,6 +170,8 @@ export class OAuthConnector {
   }
 
   async #getAccessCode() {
+    // See https://developers.google.com/identity/protocols/oauth2/native-app#exchange-authorization-code
+
     const url_params =
       `?code=${this.#authenticationCode}&` +
       `client_id=${this.#clientId}&` +
@@ -186,7 +192,7 @@ export class OAuthConnector {
           return Promise.resolve(response.json());
         } else {
           return Promise.reject(
-            new Error(response.status.toString + " - " + response.statusText),
+            new Error(response.status.toString + " - " + response.statusText)
           );
         }
       })

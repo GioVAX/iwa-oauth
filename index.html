@@ -25,41 +25,43 @@
     <script type="module" src="./index.js"></script>
   </head>
   <body>
-    <div class="table">
-      <div class="row">
-        <label for="auth-endpoint" class="cell">Authentication endpoint</label>
-        <input type="text" id="auth-endpoint" class="cell"/>
-      </div>
-      <div class="row">
-        <label for="access-endpoint" class="cell">Access endpoint</label>
-        <input type="text" id="access-endpoint" class="cell"/>
-      </div>
-      <div class="row">
-        <label for="client-id" class="cell">Client ID</label>
-        <input type="text" id="client-id" class="cell"/>
-      </div>
-      <div class="row">
-        <label for="client-secret" class="cell">Client Secret</label>
-        <input type="text" id="client-secret" class="cell"/>
-      </div>
-      <div class="row">
-        <label for="scope" class="cell">Scope</label>
-        <input type="text" id="scope" class="cell"/>
-      </div>
-      <div class="row">
-        <div class="cell"></div>
-        <div class="cell" style="text-align: right;">
-          <button id="oauth-flow" >OAuth flow</button>
+    <form id="oauth-form">
+      <div class="table">
+        <div class="row">
+          <label for="auth-endpoint" class="cell">Authentication endpoint</label>
+          <input type="text" id="auth-endpoint" class="cell"/>
+        </div>
+        <div class="row">
+          <label for="access-endpoint" class="cell">Access endpoint</label>
+          <input type="text" id="access-endpoint" class="cell"/>
+        </div>
+        <div class="row">
+          <label for="client-id" class="cell">Client ID</label>
+          <input type="text" id="client-id" class="cell"/>
+        </div>
+        <div class="row">
+          <label for="client-secret" class="cell">Client Secret</label>
+          <input type="text" id="client-secret" class="cell"/>
+        </div>
+        <div class="row">
+          <label for="scope" class="cell">Scope</label>
+          <input type="text" id="scope" class="cell"/>
+        </div>
+        <div class="row">
+          <div class="cell"></div>
+          <div class="cell" style="text-align: right;">
+            <button id="oauth-flow" >OAuth flow</button>
+          </div>
+        </div>
+        <div class="row">
+          <label for="auth-token" class="cell">Authentication token</label>
+          <input type="text" id="auth-token" class="cell" disabled/>
+        </div>
+        <div class="row">
+          <label for="access-code" class="cell">Access code</label>
+          <input type="text" id="access-code" class="cell" disabled/>
         </div>
       </div>
-      <div class="row">
-        <label for="auth-token" class="cell">Authentication token</label>
-        <input type="text" id="auth-token" class="cell" disabled/>
-      </div>
-      <div class="row">
-        <label for="access-code" class="cell">Access code</label>
-        <input type="text" id="access-code" class="cell" disabled/>
-      </div>
-    </div>
+  </form>
   </body>
 </html>
