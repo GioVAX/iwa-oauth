@@ -25,5 +25,8 @@ then populate the token fields with the values received from the IdP.
 ## Disclaimer
 
 This is not an officially supported Google product, and the code in this repository
-is provided as a head start for developers that intend to implement their own
+is provided as is as a head start for developers that intend to implement their own
 approach to OAuth flows.
+
+This implementation is based on the features currently available to IWAs, and will be updated
+when any new developments of the IWA infrastructure are launched.
